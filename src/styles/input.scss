@@ -1,0 +1,162 @@
+// src/input.scss
+
+@import "tokens";
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+
+  .input-info {
+    display: flex;
+    justify-content: space-between;
+    .help-text {
+      color: $color-secondary;
+      font-size: $font-size-small;
+    }
+
+    .error-text {
+      color: $color-error;
+      font-size: $font-size-small;
+    }
+    .character-count {
+      color: $color-secondary;
+      font-size: $font-size-small;
+      margin-top: 5px;
+    }
+  }
+
+  .input-group {
+    position: relative;
+    .input-prefix,
+    .input-suffix {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+
+    .input-prefix {
+      left: $spacing-small;
+    }
+
+    .input-suffix {
+      right: $spacing-small;
+    }
+    .input-icon {
+      position: absolute;
+      left: $spacing-medium;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $color-disabled;
+      z-index: 3;
+      width: 20px; 
+      height: 20px; 
+    }
+    .input-field {
+      padding: $spacing-small;
+      border: 1px solid $color-disabled;
+      border-radius: 4px;
+      width: -webkit-fill-available;
+      &.has-icon {
+        padding-left: 30px;
+      }
+      &.has-prefix {
+        padding-left: 20px;
+        padding-right: 0px;
+      }
+      &.has-suffix {
+        right: 0;
+      }
+      .floating {
+        position: absolute;
+      }
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+      }
+      &.focused {
+        border-color: $color-primary;
+      }
+      &.disabled {
+        cursor: not-allowed;
+      }
+      &.error {
+        border-color: $color-error;
+      }
+      &.success {
+        border-color: $color-success;
+      }
+      &.hover {
+        &:hover {
+          border-color: $color-hover;
+        }
+      }
+      &:focus + .floating-label,
+      &:not(:placeholder-shown) + .floating-label {
+        z-index: 3;
+        position: inherit;
+        left: 8px;
+        top: -45px;
+      }
+    }
+
+    .floating-label {
+      position: absolute;
+      top: 5px; 
+      left: 10px; 
+      transition: all 0.3s ease;
+      pointer-events: none;
+      color: $color-secondary;
+      opacity: 0.75; 
+    }
+
+    .password-toggle-icon {
+      position: absolute;
+      top: 50%;
+      right: $spacing-medium;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: $color-secondary;
+
+      &:hover {
+        color: $color-icon-hover;
+      }
+    }
+
+    .input-clear-icon {
+      position: absolute;
+      top: 50%;
+      right: $spacing-medium;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: $color-secondary;
+      &:hover {
+        color: $color-icon-hover;
+      }
+    }
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  &.outlined .input-field {
+    border: 2px solid $color-outlind-underlined;
+  }
+
+  &.filled .input-field {
+    background-color: $color-filled-color;
+  }
+
+  &.underlined .input-field {
+    border: none;
+    border-bottom: 2px solid $color-outlind-underlined;
+  }
+
+  &.rounded .input-field {
+    border-radius: 20px;
+  }
+}
+
+
